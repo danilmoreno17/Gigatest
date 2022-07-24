@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>    
+    <Folder Include="Application\Modules\Catalog\Commands\" />
+    <Folder Include="Application\Modules\Catalog\EventHandlers\" />
+    <Folder Include="Application\Modules\Client\Commands\" />
+    <Folder Include="Application\Modules\Client\EventHandlers\" />
+    <Folder Include="Application\Modules\Client\Queries\" />
+    <Folder Include="Application\Modules\Company\Commands\" />
+    <Folder Include="Application\Modules\Company\EventHandlers\" />
+    <Folder Include="Application\Modules\Company\Mapping\" />
+    <Folder Include="Application\Modules\Contact\Commands\" />
+    <Folder Include="Application\Modules\Contact\EventHandlers\" />
+    <Folder Include="Application\Modules\Customer\Commands\" />
+    <Folder Include="Application\Modules\Customer\EventHandlers\" />
+    <Folder Include="Application\Modules\EmployeeAward\Commands\" />
+    <Folder Include="Application\Modules\EmployeeAward\Specifications\" />
+    <Folder Include="Application\Modules\EmployeeAward\Queries\" />
+    <Folder Include="Application\Modules\Person\Commands\" />
+    <Folder Include="Application\Modules\Person\EventHandlers\" />
+    <Folder Include="Application\Modules\ProjectReportDetail\Mapping\" />
+    <Folder Include="Application\Modules\Project\Commands\" />
+    <Folder Include="Application\Modules\Project\EventHandlers\" />
+    <Folder Include="Domain\Events\Catalog\" />
+    <Folder Include="Domain\Exceptions\" />
+    <Folder Include="Application\Modules\Subsidiary\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Specification" Version="6.0.1" />
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.6" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.3" />
+  </ItemGroup>
+
+</Project>

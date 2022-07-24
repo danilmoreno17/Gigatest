@@ -1,0 +1,92 @@
+﻿using Kameyo.Api.Filters;
+using Kameyo.Core.Application.Common.Models;
+using Kameyo.Infrastructure.Identity.User.Dtos.Request;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Web.Http;
+
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace Kameyo.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ApiControllerBase
+    {
+        public UsersController()
+        {
+
+        }
+
+        //[HttpGet]
+        //public async Task<ActionResult<Result<UsersDtoResponse>>> Get([FromQuery] GetUserQueryRequest query)
+        //{
+        //    return BuildResponse(await Mediator.Send(query));
+        //}
+
+        [HttpGet()]
+        public async Task<ActionResult<LoadResultModel>> GetLoadOptions(DataSourceLoadOptions loadOptions)
+        {
+            var query = new GetUsersLoadOptionsQueryRequest() { LoadOptions = loadOptions };
+            return BuildResponse(await Mediator.Send(query));
+        }
+
+        //[HttpGet("all")]
+        //public async Task<ActionResult<Result<UsersDtoResponse>>> GetAll([FromQuery] GetAllUserQueryRequest query)
+        //{
+        //    return BuildResponse(await Mediator.Send(query));
+        //}
+
+
+        //[HttpGet("paginated")]
+        //public async Task<ActionResult<ResultPaginated<UsersDtoResponse>>> GetPaginated([FromQuery] GetUsersPaginationQueryRequest query)
+        //{
+        //    return BuildResponse(await Mediator.Send(query));
+        //}
+
+        [HttpPost]
+<<<<<<< HEAD
+        public async Task<ActionResult<Result<string>>> Post([FromBody] CreateUserCommandRequest createUserRequest)
+        {
+            return BuildResponse(await Mediator.Send(createUserRequest));
+        }
+        
+=======
+        public async Task<ActionResult<Result<string>>> Post(Dictionary<string,string> values)
+        {           
+
+            var jsonValue = JsonConvert.SerializeObject(values);
+            var CommandRequest = new CreateUserCommandRequest();
+            JsonConvert.PopulateObject(jsonValue, CommandRequest);
+            CommandRequest.Values = values;
+
+
+            return BuildResponse(await Mediator.Send(CommandRequest));
+        }
+
+>>>>>>> 3793c2e (feat:[213] preparacion de ambiente crud)
+        [HttpPut()]
+        public async Task<ActionResult<Result<string>>> Put([FromBody] UpdateUserCommandRequest updateUserRequest)
+        {
+            return BuildResponse(await Mediator.Send(updateUserRequest));
+        }
+<<<<<<< HEAD
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Result<string>>> Delete(string id)
+        {
+            return BuildResponse(await Mediator.Send(new DeleteUserCommandRequest() {  Id =id }));
+=======
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Result<string>>> Delete(string id)
+        {
+            return BuildResponse(await Mediator.Send(new DeleteUserCommandRequest() { Id = id }));
+>>>>>>> 3793c2e (feat:[213] preparacion de ambiente crud)
+        }
+    }
+}

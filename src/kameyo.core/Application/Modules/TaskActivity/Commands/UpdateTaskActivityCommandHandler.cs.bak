@@ -1,0 +1,75 @@
+﻿using Kameyo.Core.Application.Common.Interfaces;
+using Kameyo.Core.Application.Common.Models;
+using Kameyo.Core.Application.Modules.TaskActivity.Dtos.Request;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Kameyo.Core.Application.Modules.TaskActivity.Commands
+{
+    public class UpdateTaskActivityCommandHandler : IRequestHandler<UpdateTaskActivityCommandRequest, Result<string>>
+    {
+        private readonly IApplicationDbContext _dbContext;
+        public UpdateTaskActivityCommandHandler(IApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+        public async Task<Result<string>> Handle(UpdateTaskActivityCommandRequest request, CancellationToken cancellationToken)
+        {
+            var taskActivity = _dbContext.TaskActivities.Where(b => b.Id == request.Id)
+                    .FirstOrDefault();
+
+            if (taskActivity == null)
+                return Result<string>.NotFound();
+<<<<<<< HEAD
+            
+            
+                if (request.ProjectTaskId != null)
+                    taskActivity.ProjectTaskId = request.ProjectTaskId.Value;
+                if (request.EmployeeId != null)
+                    taskActivity.EmployeeId = request.EmployeeId.Value;
+                if (request.Description != null)
+                    taskActivity.Description = request.Description;
+                if (request.StartDate != null)
+                    taskActivity.StartDate = request.StartDate.Value;
+                if (request.EndDate != null)
+                    taskActivity.EndDate = request.EndDate.Value;
+                if (request.TotalTimeHour != null)
+                    taskActivity.TotalTimeHour = request.TotalTimeHour.Value;
+                if (request.IsBillable != null)
+                    taskActivity.IsBillable = request.IsBillable.Value;
+                int updateResult = await _dbContext.SaveChangesAsync(cancellationToken);
+            
+=======
+
+
+            if (request.ProjectTaskId != null)
+                taskActivity.ProjectTaskId = request.ProjectTaskId.Value;
+            if (request.EmployeeId != null)
+                taskActivity.EmployeId = request.EmployeeId.Value;
+            if (request.Description != null)
+                taskActivity.Description = request.Description;
+            if (request.StartDate != null)
+                taskActivity.StartDate = request.StartDate.Value;
+            if (request.EndDate != null)
+                taskActivity.EndDate = request.EndDate.Value;
+            if (request.TotalTimeHour != null)
+                taskActivity.TotalTimeHour = request.TotalTimeHour.Value;
+            if (request.TotalTimeHourApproved != null)
+                taskActivity.TotalTimeHourApproved = request.TotalTimeHourApproved.Value;
+            if (request.IsBillable != null)
+                taskActivity.IsBillable = request.IsBillable.Value;
+            if (request.InProjectReport != null)
+                taskActivity.InProjectReport = request.InProjectReport.Value;
+            int updateResult = await _dbContext.SaveChangesAsync(cancellationToken);
+
+>>>>>>> 223bbda (api)
+
+            return Result<string>.Success(new List<string> { taskActivity.Id.ToString() }, HttpStatusCode.OK);
+        }
+    }
+}
