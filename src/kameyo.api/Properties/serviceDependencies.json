@@ -7,6 +7,10 @@
     "storage1": {
       "type": "storage",
       "connectionId": "BlobStorageSettings:ConnectionString"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": null
     }
   }
 }
