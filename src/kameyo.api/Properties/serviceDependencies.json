@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": null
+    },
+    "apis1": {
+      "type": "apis"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "DefaultConnection"
@@ -7,10 +14,6 @@
     "storage1": {
       "type": "storage",
       "connectionId": "BlobStorageSettings:ConnectionString"
-    },
-    "secrets1": {
-      "type": "secrets",
-      "connectionId": null
     }
   }
 }
